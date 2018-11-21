@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Leandra - BHT</title>
+</head>
+<body>
+    <form action="" class="flexRow">
+        <div class="flexCol">
+            <label for="integerOne">Enter an integer:</label>
+            <input type="text" name="integerOne" id="integerOne">
+        </div>
+        <div class="flexCol">
+            <label for="integerTwo">Enter another integer:</label>
+            <input type="text" name="integerTwo" id="integerTwo">
+        </div>
+        <input type="submit" id="submit">
+    </form>
+    <p id="list"></p>
+    <p id="quantity"></p>
+
+</body>
+<script>
+    loop = (num1, num2) => {
+        let arr = [];
+        for (let i = num1; i<=num2; i++){
+            if (i.toString().includes('3')){
+                arr.push(i.toString())
+            }
+        }
+
+        let stringArr = arr.join(", ");
+        let quantity = (stringArr.match(/3/g) || []).length;
+        document.getElementById("list").innerHTML = `There are ${quantity} 3s.`;
+        document.getElementById("quantity").innerHTML = `The numbers are : ${stringArr}`;
+    }
+
+    document.getElementById("submit").addEventListener('click',() => {
+        event.preventDefault();
+        let intOne = document.getElementById("integerOne").value;
+        let intTwo = document.getElementById("integerTwo").value;
+        loop(intOne, intTwo);
+    })
+
+
+</script>
+</html>
