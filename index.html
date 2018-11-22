@@ -8,41 +8,48 @@
     <title>Leandra - BHT</title>
 </head>
 <body>
-    <form action="" class="flexRow">
+    <form action="">
         <div class="flexCol">
             <label for="integerOne">Enter an integer:</label>
-            <input type="text" name="integerOne" id="integerOne">
+            <input type="number" name="integerOne" id="integerOne">
         </div>
         <div class="flexCol">
             <label for="integerTwo">Enter another integer:</label>
-            <input type="text" name="integerTwo" id="integerTwo">
+            <input type="number" name="integerTwo" id="integerTwo">
         </div>
         <input type="submit" id="submit">
     </form>
-    <p id="list"></p>
-    <p id="quantity"></p>
+
+    <div class="threes">
+        <button id="tryAgain">Try again?</button>
+        <p id="list"></p>
+        <p id="quantity"></p>
+    </div>
+
 
 </body>
 <script>
-    loop = (num1, num2) => {
+    document.getElementById("submit").addEventListener('click', () => {
+            event.preventDefault();
+            let intOne = document.getElementById("integerOne").value;
+            let intTwo = document.getElementById("integerTwo").value;
+            listNumbers(intOne, intTwo);
+        })
+
+    listNumbers = (num1, num2) => {
         let arr = [];
         for (let i = num1; i<=num2; i++){
             if (i.toString().includes('3')){
                 arr.push(i.toString())
             }
         }
-
         let stringArr = arr.join(", ");
         let quantity = (stringArr.match(/3/g) || []).length;
-        document.getElementById("list").innerHTML = `There are ${quantity} 3s.`;
+        document.getElementById("list").innerHTML = `There are ${quantity} 3s between ${num1} and ${num2}`;
         document.getElementById("quantity").innerHTML = `The numbers are : ${stringArr}`;
     }
-
-    document.getElementById("submit").addEventListener('click',() => {
-        event.preventDefault();
-        let intOne = document.getElementById("integerOne").value;
-        let intTwo = document.getElementById("integerTwo").value;
-        loop(intOne, intTwo);
+    document.getElementById("tryAgain").addEventListener('click', () => {
+        window.location.reload();
     })
 
 

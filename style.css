@@ -1,9 +1,28 @@
-form {
+form, .threes {
+    display:flex;
+    flex-direction:column;
+    margin:0 auto;
+    max-width:50%;
+}
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:center;
+}
+
+#submit,button {
+    margin:1em 0;
+}
+
+#submit {
+    background-color:goldenrod;
+}
+
+button {
+    background-color:darkcyan;
+}
+
+.flexCol{
     display:flex;
     flex-direction:column;
 }
-
-/* .flexCol {
-    display:flex;
-    flex-direction:column;
-} */
